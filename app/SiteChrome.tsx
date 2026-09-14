@@ -1,5 +1,6 @@
 import { ChevronDown, Download, Globe2, History, Palette, Smartphone } from 'lucide-react';
 import { getAppCopy, getUi, isRtl, locales, pathWithLocale, type Locale } from './i18n';
+import { ThemePicker } from './ThemePicker';
 
 export function AppMark() {
   return <img className="app-mark" src="/app-icon.svg" alt="" width="44" height="44" />;
@@ -20,13 +21,13 @@ export function SiteHeader({ locale, page }: { locale: Locale; page: 'home' | 'd
         <a href={`${home}#privacy`}>{u.privacy}</a>
         <a className={page === 'downloads' ? 'nav-active' : ''} href={downloads}>{u.downloads}</a>
       </nav>
-      <details className="language-picker">
+      <details className="language-picker header-picker">
         <summary aria-label={u.language}>
           <Globe2 size={19} aria-hidden="true" />
           <span>{locales.find(([code]) => code === locale)?.[1]}</span>
-          <ChevronDown className="language-chevron" size={16} aria-hidden="true" />
+          <ChevronDown className="picker-chevron" size={16} aria-hidden="true" />
         </summary>
-        <nav className="language-menu" aria-label={u.language}>
+        <nav className="language-menu picker-menu" aria-label={u.language}>
           {locales.map(([code, name]) => (
             <a
               key={code}
@@ -38,6 +39,7 @@ export function SiteHeader({ locale, page }: { locale: Locale; page: 'home' | 'd
           ))}
         </nav>
       </details>
+      <ThemePicker locale={locale} />
     </header>
   );
 }

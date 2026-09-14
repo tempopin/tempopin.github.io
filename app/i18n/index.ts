@@ -14,6 +14,44 @@ export const locales = [
 
 export type Locale = (typeof locales)[number][0];
 type UiTuple = [string, string, string, string, string, string, string, string, string];
+type ThemeTuple = [string, string, string, string];
+
+const themeRows: Record<Locale, ThemeTuple> = {
+  en: ['Theme', 'Light', 'Dark', 'System'],
+  ar: ['المظهر', 'فاتح', 'داكن', 'النظام'],
+  bg: ['Тема', 'Светла', 'Тъмна', 'Системна'],
+  bn: ['থিম', 'হালকা', 'গাঢ়', 'সিস্টেম'],
+  cs: ['Motiv', 'Světlý', 'Tmavý', 'Systémový'],
+  da: ['Tema', 'Lys', 'Mørk', 'System'],
+  de: ['Design', 'Hell', 'Dunkel', 'System'],
+  el: ['Θέμα', 'Φωτεινό', 'Σκοτεινό', 'Σύστημα'],
+  es: ['Tema', 'Claro', 'Oscuro', 'Sistema'],
+  fa: ['پوسته', 'روشن', 'تیره', 'سیستم'],
+  fi: ['Teema', 'Vaalea', 'Tumma', 'Järjestelmä'],
+  fr: ['Thème', 'Clair', 'Sombre', 'Système'],
+  he: ['ערכת נושא', 'בהיר', 'כהה', 'מערכת'],
+  hi: ['थीम', 'हल्का', 'गहरा', 'सिस्टम'],
+  hu: ['Téma', 'Világos', 'Sötét', 'Rendszer'],
+  id: ['Tema', 'Terang', 'Gelap', 'Sistem'],
+  it: ['Tema', 'Chiaro', 'Scuro', 'Sistema'],
+  ja: ['テーマ', 'ライト', 'ダーク', 'システム'],
+  ko: ['테마', '라이트', '다크', '시스템'],
+  ms: ['Tema', 'Cerah', 'Gelap', 'Sistem'],
+  nb: ['Tema', 'Lys', 'Mørk', 'System'],
+  nl: ['Thema', 'Licht', 'Donker', 'Systeem'],
+  pl: ['Motyw', 'Jasny', 'Ciemny', 'Systemowy'],
+  'pt-BR': ['Tema', 'Claro', 'Escuro', 'Sistema'],
+  ro: ['Temă', 'Luminos', 'Întunecat', 'Sistem'],
+  ru: ['Тема', 'Светлая', 'Тёмная', 'Системная'],
+  sv: ['Tema', 'Ljust', 'Mörkt', 'System'],
+  th: ['ธีม', 'สว่าง', 'มืด', 'ระบบ'],
+  tr: ['Tema', 'Açık', 'Koyu', 'Sistem'],
+  uk: ['Тема', 'Світла', 'Темна', 'Системна'],
+  ur: ['تھیم', 'روشن', 'تاریک', 'سسٹم'],
+  vi: ['Giao diện', 'Sáng', 'Tối', 'Hệ thống'],
+  'zh-CN': ['主题', '浅色', '深色', '跟随系统'],
+  'zh-TW': ['主題', '淺色', '深色', '跟隨系統'],
+};
 
 // Site-only labels. Product terminology and feature copy below come from Android resources.
 const rows: Record<Locale, UiTuple> = {
@@ -88,6 +126,11 @@ export function preferredLocale(acceptLanguage: string | null): Locale {
 export function getUi(locale: Locale) {
   const [downloads, privacy, language, apply, comingSoon, downloadIntro, notLive, backHome, noInternet] = rows[locale];
   return { downloads, privacy, language, apply, comingSoon, downloadIntro, notLive, backHome, noInternet };
+}
+
+export function getThemeUi(locale: Locale) {
+  const [theme, light, dark, system] = themeRows[locale];
+  return { theme, light, dark, system };
 }
 
 export function getAppCopy(locale: Locale) {
