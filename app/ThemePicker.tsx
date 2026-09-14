@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Monitor, Moon, Sun, SunMoon } from 'lucide-react';
+import { Check, Monitor, Moon, Sun, SunMoon } from 'lucide-react';
 import { getThemeUi, type Locale } from './i18n';
 
 type ThemePreference = 'light' | 'dark' | 'system';
@@ -59,9 +59,7 @@ export function ThemePicker({ locale }: { locale: Locale }) {
   return (
     <details className="theme-picker header-picker" ref={detailsRef}>
       <summary aria-label={`${labels.theme}: ${labels[preference]}`}>
-        <SunMoon size={19} aria-hidden="true" />
-        <span>{labels.theme}</span>
-        <ChevronDown className="picker-chevron" size={16} aria-hidden="true" />
+        <SunMoon size={22} aria-hidden="true" />
       </summary>
       <div className="theme-menu picker-menu" role="group" aria-label={labels.theme}>
         {options.map(({ value, label, Icon }) => (
