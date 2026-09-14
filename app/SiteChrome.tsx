@@ -1,6 +1,7 @@
 import { Download, Globe2, History, Palette, Smartphone } from 'lucide-react';
 import { getAppCopy, getUi, isRtl, locales, pathWithLocale, type Locale } from './i18n';
 import { ThemePicker } from './ThemePicker';
+import { HeaderControls } from './HeaderControls';
 
 export function AppMark() {
   return <img className="app-mark" src="/app-icon.svg" alt="" width="44" height="44" />;
@@ -21,7 +22,7 @@ export function SiteHeader({ locale, page }: { locale: Locale; page: 'home' | 'd
         <a href={`${home}#privacy`}>{u.privacy}</a>
         <a className={page === 'downloads' ? 'nav-active' : ''} href={downloads}>{u.downloads}</a>
       </nav>
-      <div className="header-controls">
+      <HeaderControls>
         <details className="language-picker header-picker">
           <summary aria-label={u.language}>
             <Globe2 size={22} aria-hidden="true" />
@@ -39,7 +40,7 @@ export function SiteHeader({ locale, page }: { locale: Locale; page: 'home' | 'd
           </nav>
         </details>
         <ThemePicker locale={locale} />
-      </div>
+      </HeaderControls>
     </header>
   );
 }
