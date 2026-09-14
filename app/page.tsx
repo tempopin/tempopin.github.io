@@ -1,22 +1,16 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { Activity, ArrowDown, BellRing, Check, Clock3, Palette, ShieldCheck, SlidersHorizontal, WifiOff } from 'lucide-react';
 import { SectionTabs, SiteFooter, SiteHeader } from './SiteChrome';
 import { getAppCopy, getUi, isRtl, pathWithLocale } from './i18n';
-import { resolveRequestLocale } from './i18n/request';
-
-type PageProps = { searchParams: Promise<{ lang?: string | string[] }> };
+import { useLocale } from './i18n/client';
 
 function Screenshot({ src, alt, className = '' }: { src: string; alt: string; className?: string }) {
   return <div className={`screen-shot ${className}`}><img src={src} alt={alt} width="540" height="1200" loading="lazy" /></div>;
 }
 
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const locale = await resolveRequestLocale((await searchParams).lang);
-  return { title: `TempoPin — ${getAppCopy(locale).strings.navigation_control}`, description: getAppCopy(locale).strings.app_description };
-}
-
-export default async function Home({ searchParams }: PageProps) {
-  const locale = await resolveRequestLocale((await searchParams).lang);
+export default function Home() {
+  const locale = useLocale();
   const { strings: s, arrays: a } = getAppCopy(locale);
   const u = getUi(locale);
   const [privacyTitle, ...privacyLines] = s.privacy_summary.split('\n');

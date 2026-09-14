@@ -99,5 +99,6 @@ export function isRtl(locale: Locale) {
 }
 
 export function pathWithLocale(path: string, locale: Locale) {
-  return `${path}?lang=${encodeURIComponent(locale)}`;
+  const route = path === '/' ? path : `${path.replace(/\/$/, '')}/`;
+  return `${route}?lang=${encodeURIComponent(locale)}`;
 }

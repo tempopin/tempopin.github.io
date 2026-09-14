@@ -1,10 +1,9 @@
-import type { Metadata } from 'next';
+'use client';
+
 import { ArrowLeft, Package } from 'lucide-react';
 import { SiteFooter, SiteHeader } from '../SiteChrome';
 import { getUi, isRtl, pathWithLocale } from '../i18n';
-import { resolveRequestLocale } from '../i18n/request';
-
-type PageProps = { searchParams: Promise<{ lang?: string | string[] }> };
+import { useLocale } from '../i18n/client';
 
 const sources = [
   { name: 'Google Play Store', icon: '/download-icons/google-play.svg' },
@@ -13,14 +12,8 @@ const sources = [
   { name: 'F-Droid', icon: '/download-icons/fdroid.svg' },
 ];
 
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const locale = await resolveRequestLocale((await searchParams).lang);
-  const u = getUi(locale);
-  return { title: `${u.downloads} — TempoPin`, description: u.notLive };
-}
-
-export default async function Downloads({ searchParams }: PageProps) {
-  const locale = await resolveRequestLocale((await searchParams).lang);
+export default function Downloads() {
+  const locale = useLocale();
   const u = getUi(locale);
   return (
     <main className="downloads-page" lang={locale} dir={isRtl(locale) ? 'rtl' : 'ltr'}>

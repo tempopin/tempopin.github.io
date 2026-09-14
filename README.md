@@ -11,6 +11,8 @@ pnpm dev
 
 The download choices are visual placeholders; they do not link to live releases.
 
+The public site is published by GitHub Pages from this repository's `main` branch at <https://tempopin.github.io/>. The workflow builds a static version; the browser handles language selection and detects its preferred locale when no language is selected.
+
 The checked-in `app/i18n/app-copy.json` contains the website's app-derived copy for all supported locales. To refresh it from a local Android checkout:
 
 ```sh

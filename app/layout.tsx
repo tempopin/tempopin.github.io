@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('http://localhost:3000'),
+  metadataBase: new URL('https://tempopin.github.io'),
   title: 'TempoPin — Your time, visible',
   description: 'A private, customizable live app timer for Android.',
   icons: {
