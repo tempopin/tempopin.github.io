@@ -44,7 +44,7 @@ export default function Home() {
           <div className="fact-card"><span className="fact-icon"><Activity size={25} aria-hidden="true" /></span><div><strong>{s.daily_reset_title}</strong><span>{s.daily_reset_description}</span></div></div>
         </div>
         <div className="today-visual">
-          <div className="ring-figure" aria-hidden="true"><span className="ring-center"><strong>11s</strong><small>{s.control_today_summary_label}</small></span></div>
+          <div className="ring-figure" aria-hidden="true"><span className="ring-center"><strong>1h 22m</strong><small>{s.control_today_summary_label}</small></span></div>
           <div className="ready-card"><span className="ready-dot" /><span><strong>{s.control_actions_title}</strong><small>{s.control_actions_description}</small></span></div>
           <div className="overlay-example"><span>{s.appearance_style_title}</span><strong>00:42:18</strong><small>↳ 00:08:41</small></div>
         </div>
